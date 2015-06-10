@@ -1,0 +1,137 @@
+<div class="gdlr-lms-container gdlr-lms-container">
+                    <div class="gdlr-lms-item">
+                     <div class="profile_blog_lft" style="border:none">
+                <%#= ad_unit(:skyscraper, "pub-6430317842295107", {:slot => "5305317726"}) %>
+                <%=image_tag '3.jpg' %>
+                </div>                     
+
+                <div class="nine column" style="padding:10px">
+                    <%= form_tag schools_create_path, :class => 'gdlr-lms-form' do |f| %>
+
+                    <p class="gdlr-lms-half-left">
+            <label >Choose a School*</label>
+            <span class="gdlr-lms-combobox" >
+           <select  name="school" id="school" style="width:100% ">
+                            <option value="" >-----------Select School----------</option>
+                            <% @school_name.each do |sn| %>
+                                 <option value="<%= sn.business_school    %> - <%= sn.university%> -<%= sn.id %>">
+                                     <%= sn.business_school  %> -  <%= sn.university %> 
+                                 </option>
+                            <% end %>
+                                  
+                            </select>
+            
+                        </span></p>
+                        <p class="gdlr-lms-half-left">
+            <label><span>Interview Date*</span></label>
+             
+            <input type="radio" name="interview" id="intqyes" value="yes">&nbspYes
+        <input type="radio" name="interview" id="intqno" style="margin-left:10px;" value="no">&nbspNo
+                        
+        
+                        
+            </p>
+                        
+                        <p class="gdlr-lms-half-left" style="display:none;" id="intdate" style="  width: 100%;">
+            
+            <label >Interview Date</label>
+            
+            
+            <span class="gdlr-lms-combobox" >
+            
+                        <input type="date" name="interviewdate" id="interviewdate" value="" >
+                                  
+    
+                        </span></p>
+
+                        
+
+                        <p class="gdlr-lms-half-left">
+            <label >Status*</label>
+            <span class="gdlr-lms-combobox" >
+                            <select  name="status" id="status" style="width: 100%;">
+                                <option value="">-Select-</option>
+                                <option value="Intend to Apply">Intend to Apply
+                                </option>
+                                <option value="Rejected">Rejected</option>
+                                <option value="Accepted">Accepted</option>
+                                <option value="Waitlisted">Waitlisted   </option>
+                                <option value="WL, Accepted">WL, Accepted   </option>
+                                <option value="WL, Rejected">WL, Rejected   </option>
+                                <option value="Pending">Pending</option>
+                            </select>
+                        </span></p>
+
+                        <p class="gdlr-lms-half-left">
+            <label >Program*</label>
+            <span class="gdlr-lms-combobox" >
+                            <select  name="program" id="program" style="width: 100%;">
+                                <option value="">-Select-</option>
+                                <option value="Full Time">Full Time</option>
+                                <option value="Part Time">Part Time</option>
+                        
+                            </select>
+                        </span></p>
+                        
+                        
+
+                        <p class="gdlr-lms-half-left">
+            <label >Round's Applied</label>
+            <span class="gdlr-lms-combobox" style="width: 158px;">
+                        <select name="choice" id="program">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="N/A">N/A</option>
+                        
+                            </select>                   
+                    </span> </p>
+                    <p class="gdlr-lms-half-left">
+            <label >Date Applied</label>
+            <span class="gdlr-lms-combobox" >
+                       <input type="date" name="received" id="received"  placeholder="MM/DD/YYYY" style="  background-color: white;" >                  
+                    </span> </p>
+                   <p class="gdlr-lms-half-left">                                                 
+            <label>Scholarship</label>
+            <input type="text" name="scholarship"  value=""  style="width:87%">&nbsp<span><i class="gdlr-icon icon-dollar" style="color: #333333; font-size: 20px; "></i></span></p>
+            <p class="gdlr-lms-half-left">
+            <label >Date Decision Received</label>
+            <span class="gdlr-lms-combobox" >
+                       <input type="date" name="descion" id="descion"  placeholder="MM/DD/YYYY" style="  background-color: white;" >                  
+                    </span> </p>
+                     <div style="width:100%;  text-align: center;">
+                          <input type="submit" class="gdlr-button medium" style="color:#ffffff; background-color:#4f8ed6; " value="Add Application" />
+             &nbsp
+            <button class="gdlr-button medium" style="color:#ffffff; background-color:#d6724f;margin-top:0px;"><a href="<%=profile_index_path %>" style='color:inherit'>Cancel</a></button>
+
+                     </div>
+
+
+                    <%end %>
+                    <div class="clear"></div>
+</div>
+<div class="profile_blog_rgt" style="border:none">
+                <%#= ad_unit(:skyscraper, "pub-6430317842295107", {:slot => "5305317726"}) %>
+                <%=image_tag '3.jpg' %>
+                </div>
+</div>
+</div>
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+ <script type="text/javascript">
+$(document).ready(function(){
+    
+ $('#intqyes').click(function(){
+        
+         $('#intdate').css('display','block');
+            
+        
+        
+ });
+ $('#intqno').click(function(){
+        
+     $('#intdate').css('display','none');
+ });
+});
+</script>

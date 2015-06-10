@@ -1,0 +1,75 @@
+<div class="gdlr-item gdlr-divider-item"></div>
+
+<div class="gdlr-lms-container gdlr-lms-container">
+        <div class="gdlr-lms-item">
+
+
+<div style="margin-top:20px">
+
+<div class="one columns"><%= ad_unit(:skyscraper, "pub-6430317842295107", {:slot => "5305317726"}) %></div>
+<div class="one columns"></div>
+<div class="eight columns">
+<div class="well">
+  <div class="forabg">
+    <div class="inner">
+    <ul class="topiclist">
+      <li class="header">
+        <dl class="icon">
+          <dt class="header-name" style="text-align: center;">Forum</dt>
+          <dd class="topics">Topics</dd>
+          <dd class="posts">Posts</dd>
+          <dd class="lastpost"><span>Last post</span></dd>
+        </dl>
+      </li>
+    </ul>
+    <ul class="topiclist forums">
+      <% @forum.each do |f| %>
+        <li class="row" id="forum2">
+          <dl class="icon" style="background-image: url(./styles/marina_teal/imageset/forum_read.svg); background-repeat: no-repeat;">
+            <dt title="No unread posts">
+            <!-- <a class="feed-icon-forum" title="Feed - Your first forum" href="http://phpbb3.pixelgoose.com/feed.php?f=2"><i class="fa fa-rss-square fa-lg"></i></a> -->
+              <a href="<%= forum_topic_path(f.id) %>" class="forumtitle"><%= f.name %></a><br>
+              <div class="forum-description" style="  font-size: 14px;"><%= raw f.description %>
+                  <button class="gdlr-button medium" style="color:white; background-color:#26BCB0;margin-top:10px;padding: 8px; ">
+                  
+               <a href="<%=forum_topic_path(f.id) %>" style='color:inherit'>View</a>
+              <!--  <a href="" style="padding-left: 40px;">View</a> --></button>
+              </div>
+            </dt>
+            <dd class="topics"><%=f.topics.count %> <dfn>Topics</dfn></dd>
+            <dd class="posts"><%=f.topics.inject(0) {|sum, p| sum += p.posts.count} %> <dfn>Posts</dfn></dd>
+           <dd class="lastpost">
+           <span>
+              <dfn>Last post</dfn> 
+              <%  @topic = Topic.where("refforum_id=?",f.id).last %>
+              
+              <% unless @topic.nil? %>
+
+                <%a=Member.find_by_id(@topic.member_id) %>
+               by <a href="<%=static_profile_path(a.username)%>" class="username-coloured"> <%=a.username %></a>
+               <i class="fa fa-arrow-right grey"></i></a> <br><%=  @topic.created_at.strftime("%m-%d-%Y") %><br>            
+
+              </span> 
+              <% else %>
+              <%= "No Recent Posts" %></br>
+               
+              <% end %>
+              
+            </dd>
+          </dl>
+        </li>
+        <%end%>
+    </ul>
+  </div>
+  <div class="clear"></div>
+  </div>
+  <div class="clear"></div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="one columns"></div>
+<div class="one columns"><%= ad_unit(:skyscraper, "pub-6430317842295107", {:slot => "5305317726"}) %></div>
+<div class="clear"></div>
+</div>
+</div>
+</div>

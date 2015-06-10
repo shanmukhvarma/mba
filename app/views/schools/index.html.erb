@@ -1,0 +1,105 @@
+ 
+<div class="gdlr-item gdlr-divider-item"></div>
+<div class="gdlr-lms-container gdlr-lms-container">
+        <div class="gdlr-lms-item">
+ <div  class= "ten column" id='profind'>
+<div style="margin-top:18px">
+<div class="gdlr-item gdlr-tab-item horizontal" id="table">
+<div class="tab-title-wrapper">
+	<a href="<%=schools_path %>">
+		<h4 class="tab-title active">
+		<span>MBA Schools list</span></h4>
+	</a>
+	<a href="<%=schools_ranking_path %>"><h4 class="tab-title"><span>By Ranking</span></h4></a>
+	<!-- <a href="<%=schools_name_path %>"><h4 class="tab-title"><span>By Name</span></h4></a> -->
+	<a href="<%=schools_state_path %>"><h4 class="tab-title"><span>By State</span></h4></a>
+	<div class="gdlr-lms-content">
+
+		<div id="tribe-events-bar">
+
+	<!-- <form id="tribe-bar-form" class="tribe-clearfix tribe-bar-full" name="tribe-bar-form" method="post" action="http://themes.goodlayers.com/clevercourse/events?post_type=tribe_events&amp;eventDisplay=default">
+	 -->
+		<!-- Mobile Filters Toggle -->
+	<%=search_form_for @q, :html => { :class => 'tribe-clearfix tribe-bar-full', :id => 'tribe-bar-form'} do |f| %>
+
+			<div class="tribe-bar-filters">
+				<div class="tribe-bar-filters-inner tribe-clearfix">
+					<div class="tribe-bar-date-filter">
+							<div id="tribe-bar-dates">
+							 <label class="label-tribe-bar-date" for="tribe-bar-date">Search</label>
+							 <!-- <input type="text" name="tribe-bar-date" style="position: relative;" id="tribe-bar-date" value="" placeholder="Date"> -->
+							 <%= f.search_field :university_cont, id:'tribe-bar-search', placeholder:'University Name', :style => 'outline:none' %>
+							</div>
+							<input type="hidden" name="tribe-bar-date-day" id="tribe-bar-date-day" class="tribe-no-param" value="">
+					</div>
+					<div class="tribe-bar-search-filter">
+						<label class="label-tribe-bar-search" for="tribe-bar-search">Search</label>
+						<%= f.search_field :business_school_cont, id:'tribe-bar-search', placeholder:'School Name', :style => 'outline:none' %> 
+					</div>
+					<div class="tribe-bar-submit">
+						<%= f.submit%>
+					</div>
+					<!-- .tribe-bar-submit -->
+				</div>
+				<!-- .tribe-bar-filters-inner -->
+			</div><!-- .tribe-bar-filters -->
+	<% end %>
+</div>
+<div>
+	<!-- #Temproray -->
+	 
+</div>
+	<!-- <div class="well"  > -->
+		<div>
+		 
+			<table width="100%" border="1" cellspacing="8" cellpadding="0" class="drawreq_table">
+                       <tr><th id="th" style="border-right:none;border-bottom:none"></th>
+                <th id ="th" style="border-left:none" rowspan="2"  width="38%">Business School</th>
+                <th id ="th" rowspan="2" width="4%">University</th>
+                <th id ="th" rowspan="2" width="4%">State</th>
+                <th id ="th" rowspan="2" width="4%">City</th>
+                <th id ="th" colspan="4" width="27%">Ranks</th>
+                        </tr>
+                        <tr>
+
+                        <th  id ="th" width="12%" style="border:#3E6AA7;border-bottom:1px solid #000" ></th>
+                        <th  id ="th" width="11%">Forbes</th>
+                        <th id ="th">USN</th>
+                    </tr>
+                    <% @schools.each do |t| %>
+                    <tr style="font-size:15px">
+                            <td style="border-right:none"><img alt="Icon" src="<%= t.image.thumb('150x150').url %>" style="width: 60px; height: 41px;" />
+                    </td>
+                            <td style="border-left:none"> <a href="<%= school_appinfo_path(t.business_school) %>" style="color:#453232;">
+                                    <%= t.business_school%>
+                                    </a> </td>
+                            <td style="color:#453232;"> <%=t.university %></td>
+                            <td style="color:#453232;">
+                    <%= State.find_by_id(t.state_id).name%></td>
+                            
+                            <td style="color:#453232;"><%=t.city %></td>
+                            <td style="color:#453232;"><%=t.forbes %></td>
+                    <td style="color:#453232;"><%=t.US_News_Ranking %></td>
+                    
+                    </tr>
+                    <%end%>
+                    
+                    
+               </table> 
+		</div>
+		<div class="gdlr-item gdlr-divider-item"></div>
+		<%= will_paginate @schools, :class => 'gdlr-pagination'%>
+	<!-- </div> -->
+	<div class="clear"></div>
+</div>
+<div class="clear"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="profile_blog_rgt" style="border:none">
+                <%= ad_unit(:skyscraper, "pub-6430317842295107", {:slot => "5305317726"}) %>
+                <%= ad_unit(:skyscraper, "pub-6430317842295107", {:slot => "5305317726"}) %>
+                </div>
+</div>
+</div>

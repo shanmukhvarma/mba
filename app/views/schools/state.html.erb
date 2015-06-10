@@ -1,0 +1,70 @@
+ 
+<div class="gdlr-item gdlr-divider-item"></div>
+<div class="gdlr-lms-container gdlr-lms-container">
+        <div class="gdlr-lms-item">
+ <div  class= "ten column" id='profind'>
+<div style="margin-top:18px">
+<div class="gdlr-item gdlr-tab-item horizontal" id="table">
+<div class="tab-title-wrapper">
+    <a href="<%=schools_path %>">
+        <h4 class="tab-title ">
+        <span>MBA Schools list</span></h4>
+    </a>
+    <a href="<%=schools_ranking_path %>"><h4 class="tab-title"><span>By Ranking</span></h4></a>
+    <!-- <a href="<%=schools_name_path %>"><h4 class="tab-title"><span>By Name</span></h4></a> -->
+    <a href="<%=schools_state_path %>"><h4 class="tab-title active"><span>By State</span></h4></a>
+    <div class="gdlr-lms-content">
+
+        
+<div>
+    <!-- #Temproray -->
+     
+</div>
+    <!-- <div class="well"  > -->
+        <div>
+         
+            <table class="style-2">
+						<tbody style="text-align:left">
+						<tr>
+							<!-- <th id="th"> Icon</th> -->
+							<th id="th" >State</th>
+							<th id ="th">School</th>
+						</tr>
+							<% @states.each do |t| %>
+							 <tr style="font-size:15px; ">
+							 	
+								<td style="padding:10px;color: #453232;"> 
+								<%= t.name %></td>
+                                <td style="padding:10px;text-align:left"> 
+                                <% a= School.where("state_id= ?" , t.id) %>
+                                
+                   				<% a.each_with_index do |key, index| %>
+                   		
+                              <%= index+1  %>) <a href="<%= school_appinfo_path(key.business_school) %>" style='color: #453232;'>
+                                <%= key.business_school %> </a><br>		
+                              	
+                                 <%end%>
+                                 
+
+                                 </td>
+							</tr>
+							<%end %>
+						</tbody>
+						</table>
+        </div>
+        <div class="gdlr-item gdlr-divider-item"></div>
+        <%= will_paginate @states, :class => 'gdlr-pagination'%>
+    <!-- </div> -->
+    <div class="clear"></div>
+</div>
+<div class="clear"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="profile_blog_rgt" style="border:none">
+                <%= ad_unit(:skyscraper, "pub-6430317842295107", {:slot => "5305317726"}) %>
+                <%= ad_unit(:skyscraper, "pub-6430317842295107", {:slot => "5305317726"}) %>
+                </div>
+</div>
+</div>

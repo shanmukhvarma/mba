@@ -1,0 +1,224 @@
+<% 
+def addthree(max)
+    # Return a sequence incremented by three up to the max.
+    i = 200
+    while i <= max
+    yield i
+    i += 10
+    end
+end
+%>
+<div class="gdlr-item gdlr-divider-item"></div>
+<!-- <div class="profile_blog_lft">
+                <%#= ad_unit(:skyscraper, "pub-6430317842295107", {:slot => "5305317726"}) %>
+                </div> -->
+                    <div class="gdlr-lms-container gdlr-lms-container">
+                    <div class="gdlr-lms-item">
+
+
+                    <%=form_for @user, :url => {:action => 'create'},:html => {:class => "gdlr-lms-form"} do |f| %>
+      
+        <p class="gdlr-lms-half-left">
+             <label>Full Name*</label>
+             
+            <%= text_field_tag 'member[name]' ,'',:autofocus => true ,placeholder: 'Name' %></p>
+              <div class="clear"></div>    
+              <p class="gdlr-lms-half-left">                                                 
+            <label>User Name*(Username should be contain 6 characters)</label>
+            <%= text_field_tag 'member[username]' , "",placeholder: 'User Name' %></p>
+            <p class="gdlr-lms-half-left">
+            <label>Email Address*</label>
+           <%= text_field_tag 'member[email]' , "",placeholder: 'Email' %></p>
+           <p class="gdlr-lms-half-left">
+            <label>Zipcode*</label>
+            <%= text_field_tag 'member[zipcode]' , "",placeholder: 'Zipcode' %></p>
+            <p class="gdlr-lms-half-left">
+            <label>Hometown</label>
+            <%= text_field_tag 'member[hometown]' , "",placeholder: 'Hometown' %></p>
+            <p class="gdlr-lms-half-left">
+            <label><span>Did you Graduate College in the USA? *</span></label>
+            
+                        
+        <input type="radio" id="question" name="member[question]" value="yes" style="width: 35px;height: 17px;"> Yes
+        <input type="radio" id="question1" name="member[question]" value="no"style="width: 35px;height: 17px;"> No   
+                        
+            </p>
+
+            <div style="display:none;" id="stated">
+            <p class="gdlr-lms-half-left">
+            
+            <label >State</label>
+            
+            
+            <span class="gdlr-lms-combobox" >
+            <select name="state" class="gdlr-lms-combobox" id="state" style="  width: 100%;
+">
+                        <option value="">-----------Select State----------</option>
+                        <% @state.each do |s| %>
+                          <option value="<%= s.id %>"><%= s.states %></option>  
+                        <% end %>
+                                  
+    </select>
+                        </span></p>
+                        <p class="gdlr-lms-half-left">
+            <label >Graduating class*</label> 
+
+            
+            <span class='gdlr-lms-combobox' style="width: 150px;">
+            <%= select_year(Date.today, start_year: 1990, end_year: 2018) %>
+                
+            </span>
+            </p>
+                        <p class="gdlr-lms-half-left">
+            <label >Undergraduate School*</label>
+            <span class="gdlr-lms-combobox" >
+            <select name="undergraduate_school" id="undergraduate_school" style="  width: 100%;" >
+                <option value="">-----------Select School----------</option>
+                   
+            </select>
+            
+                        </span></p>
+            </div>
+            <div style="display:none;" id="schoold">
+            <p class="gdlr-lms-half-left">
+            
+            <label style="">Undergraduate School*</label>
+            
+           
+        <%= text_field_tag 'school' , "",placeholder: 'Undergraduate School' %>
+           
+            </p>
+            <p class="gdlr-lms-half-left">
+            <label >Graduating class*</label> 
+
+            
+            <span class='gdlr-lms-combobox' style="width: 150px;">
+            <%= select_year(Date.today, start_year: 1990, end_year: 2018) %>
+                
+            </span>
+            </p>
+            </div>
+            
+            
+            <p class="gdlr-lms-half-left">
+            <label>GPA</label>
+                <%= text_field_tag 'member[gpa]' , "",placeholder: 'GPA' %></p>
+                 <p class="gdlr-lms-half-left">
+
+            <label>Work Experience and Other Information</label>
+            <%= text_field_tag 'member[exp]' , "",placeholder: 'Work Experience' %>
+            </p>
+                 <p class="gdlr-lms-half-left">
+            <label>GMAT Score</label>
+            
+            <span class="gdlr-lms-combobox" >
+              <select name="member[gmat_score]" style="  width: 100%;">
+                  <option value="">-----Select----</option>
+                  <% addthree(800) do |n| %>
+                     <option value="<%= n %>"><%= n %></option>
+                  <% end %>
+                
+              </select>
+              </span></p>
+           
+            
+            <p class="gdlr-lms-half-left">
+            <label>Password*</label>
+            
+            <%=password_field_tag 'password' , "",class: 'form-control' ,placeholder: 'Enter Password' %>
+            </p>
+            
+            <p class="gdlr-lms-half-left">
+            <label style="width: 171px;">Password Confirmation*</label>
+            
+            <%=password_field_tag 'password_confirmation' , "",class: 'form-control' ,placeholder: 'Retype Password' %>
+            </p>
+            <p class="gdlr-lms-half-left">
+           <label>Refer a Friend</label>
+            <%= text_field_tag 'member[friend]' , "",placeholder: "Enter Friend's Email" %></p>
+            <p class="gdlr-lms-half-left">
+            <label>Photo</label>
+            
+                <%= f.file_field :image, class: 'form-control', :style=> "  border-color: rgb(227, 227, 227);
+"%>
+            </p>
+                
+            
+            
+            
+ <div style="width:100%;">
+<%= submit_tag 'Create an account',class: 'wpcf7-form-control wpcf7-submit',name: 'signup',style:'font-size:15px;margin-top: 13px;'%>
+    
+</div>
+
+        </div>
+    <%end%> 
+    <div class="row" style="text-align:center" >
+            <h5 style="color:#bfbfbf;text-align:center">Or Login with an existing account:</h5>
+            
+    
+    <a class="gdlr-button" href="/auth/facebook" target="_self" style="color:#ffffff; background-color:#3b5998;"><i class="gdlr-icon icon-facebook"></i> Login with Facebook</a>                                                        
+    
+    <a class="gdlr-button" href="/auth/gplus" target="_self" style="color:#ffffff; background-color:#dd4b39;"><i class="gdlr-icon icon-google-plus"></i> login  with google</a>
+    
+    
+    <a class="gdlr-button" href="/auth/linkedin" target="_self" style="color:#ffffff; background-color:#007bb6;"><i class="gdlr-icon icon-linkedin-sign"></i> login with linkedin</a>
+
+    
+    
+    <a class="gdlr-button" href="/auth/twitter" target="_self" style="color:#ffffff; background-color:#00aced;"><i class="gdlr-icon icon-twitter"></i> login with twitter</a>
+                     
+    <div class="clear"></div>
+</div>
+                    </div>
+                    </div>
+
+
+                <!-- <div class="profile_blog_rgt">
+                <%#= ad_unit(:skyscraper, "pub-6430317842295107", {:slot => "5305317726"}) %>
+                </div> -->
+
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script type="text/javascript">
+$("#state").change(function(){
+   // alert("check");
+   var stateid=$("#state").val();
+   // alert(a);
+    $.ajax({
+              url: "<%=root_url %>colleges/index/"+stateid,
+              context: document.body
+            }).done(function(r) {
+                   // alert(r);
+                document.getElementById('undergraduate_school').innerHTML=r;
+                
+        });
+    
+});
+$('#question').click(function(){
+    var a=$("#question").val();
+        $('#stated').css('display','block');
+        $('#schoold').css('display','none');
+    
+    
+});
+$('#question1').click(function(){
+    
+    var b=$("#question1").val();
+    $('#schoold').css('display','block');
+    $('#stated').css('display','none');
+    
+});
+$("#undergraduate_school").change(function(){
+    var a=$("#undergraduate_school").val();
+     if(a == "OTHER (MY SCHOOL IS NOT LISTED)")
+     {
+        $('#schoold').css('display','block');
+     }
+     else
+     {
+        $('#schoold').css('display','none');
+     }
+});
+</script>

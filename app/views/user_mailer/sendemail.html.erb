@@ -1,0 +1,17 @@
+<html>
+  <body>
+    <div>
+      <p>Hello <%= @user.name %> ,</p>
+      <p>
+        To verify your e-mail address, please click on this link </br>
+        <a href="http://128.199.241.177:8080/<%= member_verify_path(@user.token) %>">http://128.199.241.177:8080/<%= member_verify_path(@user.token)%></a>    
+      </p>
+      <p>
+        Once your address is verified, you will be able to continue with the sign-in process and start posting anonymously.
+      </p><br>
+
+      <p>Sincerely,</p>
+      <p>MBAnumbers.com Team</p>
+    </div>
+  </body>
+</html>

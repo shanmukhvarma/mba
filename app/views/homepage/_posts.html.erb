@@ -1,0 +1,41 @@
+<div class="blog-item-wrapper">
+	<div class="blog-item-holder">
+ <% unless @posts.empty? %>
+ 	
+ 
+	
+		<div class="clear"></div>
+		<div class="twelve columns">
+			<div class="gdlr-item gdlr-blog-widget">
+				<div class="gdlr-ux gdlr-blog-widget-ux" style="opacity: 1; padding-top: 0px; margin-bottom: 0px;">
+					<article id="post-2255" class="post-2255 post type-post status-publish format-standard has-post-thumbnail hentry category-post-slider tag-blog tag-life-style">
+						<div class="gdlr-standard-style">
+							
+			<header class="post-header">
+				
+				
+				<h2 class="gdlr-blog-title" style="text-align: left;">
+				<% @posts.each do |a|%>
+					<a href="<%= forum_topic_path(a.id) %>"><p style="font-size:13px;"><%= a.name %>.....</p> </a>
+				<% end %>
+				</h2>
+				
+				<a href="<%= forums_index_path %>" class="gdlr-button with-border excerpt-read-more" style="background-color: #72d5cd;border-color: #72d5cd;padding: 4px 23px;margin-left: 0px;margin-top: 2px;   font-family: arial;">View More</a>
+			</header>	
+							
+							<div class="clear"></div>
+						</div>
+			</article><!-- #post -->
+				</div>
+			</div>
+		</div>
+		<div class="clear"></div>
+		
+		
+		
+	<% else %>
+		<P>NO FORUM THREADS</P>
+	<% end  %>
+	<link href='http://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+  </div>
+</div>

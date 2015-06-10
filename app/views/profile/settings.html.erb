@@ -1,0 +1,219 @@
+<div class="gdlr-item gdlr-divider-item"></div>
+<% 
+def addthree(max)
+    # Return a sequence incremented by three up to the max.
+    i = 200
+    while i <= max
+    yield i
+    i += 10
+    end
+end
+%>
+ <!-- <div class="three column">
+                <%#= ad_unit(:skyscraper, "pub-6430317842295107", {:slot => "5305317726"}) %>
+                </div>  -->
+                <div>
+                <div class="gdlr-lms-container gdlr-lms-container">
+                    <div class="gdlr-lms-item">
+
+                    <%=form_for @user, :url => {:action => 'profilecreate'},:html => {:class => "gdlr-lms-form"} do |f| %>
+        <p class="gdlr-lms-half-left">
+            <label style="color:black">User Name*</label>
+            
+            <%= text_field_tag 'member[username]' , current_user.username,placeholder: 'Name' %></p>
+            <p class="gdlr-lms-half-left">
+            <label style="color:black">Email Address*</label>
+            <%= text_field_tag 'member[email]' , current_user.email,placeholder: 'Email' %></p>
+            <p class="gdlr-lms-half-left">
+            <label style="color:black">Zipcode*</label>
+            <%= text_field_tag 'member[zipcode]' , current_user.zipcode,placeholder: 'Zipcode' %></p>
+            <p class="gdlr-lms-half-left">
+            <label style="color:black">Hometown</label>
+            <%= text_field_tag 'member[hometown]' , current_user.hometown,placeholder: 'Hometown' %></p>
+            <p class="gdlr-lms-half-left">
+           <label style="color:black"><span>Did you graduate college in the USA? *</span> </label>
+                           
+<input type="radio" id="question" name="member[question]" value="yes" style="width: 35px;height: 17px;" <% if current_user.question=="yes" %> <%= checked="checked" %> <% end %> > Yes
+<input type="radio" id="question1" name="member[question]" value="no"style="width: 35px;height: 17px;"
+    <% if current_user.question=="no" %> <%= checked="checked" %> <% end %> 
+
+> No  </p>
+<p class="gdlr-lms-half-left">
+            <label style="width: 172px;color:black">Undergraduate Year*</label>
+
+            
+            <span class='gdlr-lms-combobox' style="width: 129px;">
+                <%=select_year(Date.today,:selected => current_user.year)%>    
+            </span>
+            <script type="text/javascript">
+                        for(var i=0;i<document.getElementById('date_year').length;i++)
+                        {
+                            if(document.getElementById('date_year').options[i].value=="<%= current_user.year  %>")
+                            {
+                                document.getElementById('date_year').options[i].selected=true
+                            }
+                        }          
+            </script></p>
+            
+            <div style="display:none;" id="stated">
+            <p class="gdlr-lms-half-left">
+            <label style="color:black">State</label>
+            <span class="gdlr-lms-combobox"  >
+    <select name="state" id="state"  style="width:100%">
+                        <option value="">-----------Select State----------</option>
+
+                        <% @state.each do |s| %>
+                          <option value="<%= s.id %>"><%= s.states %></option>  
+                        <% end %>
+                                  
+    </select>
+<script type="text/javascript">
+                        for(var i=0;i<document.getElementById('state').length;i++)
+                        {
+                            if(document.getElementById('state').options[i].value=="<%= current_user.state  %>")
+                            {
+                                document.getElementById('state').options[i].selected=true
+                            }
+                        }          
+</script>
+
+
+                        </span></p>
+                        <p class="gdlr-lms-half-left">
+            <label style="color:black">Undergraduate School*</label>
+            <span class="gdlr-lms-combobox" >
+            <select name="undergraduate_school" id="undergraduate_school" style="width:100%">
+                <option value="">-----------Select School----------</option>
+                            
+            </select>
+        <script type="text/javascript">
+        for(var i=0;i<document.getElementById('undergraduate_school').length;i++)
+        {
+            if(document.getElementById('undergraduate_school').options[i].value=="<%= current_user.undergraduate_school  %>")
+            {
+                    document.getElementById('undergraduate_school').options[i].selected=true
+            }
+        }          
+            </script>
+            
+                        </span></p>
+            </div>
+            
+            <div style="display:none;" id="schoold">
+            <p class="gdlr-lms-half-left">
+            <label style="width: 172px;margin-top: 17px;">Undergraduate School*</label>
+            
+           
+            <%= text_field_tag 'school' ,current_user.undergraduate_school,placeholder: 'Undergraduate School', :style => 'margin-top:17px;' %></p>
+           
+           
+            </div>
+
+            
+           <p class="gdlr-lms-half-left">
+            <label style="color:black">GPA</label>
+                
+            <%= text_field_tag 'member[gpa]' , current_user.gpa ,placeholder: 'GPA ' %></p>
+            <p class="gdlr-lms-half-left">
+            <label style="color:black">GMAT Score</label>
+            <span class="gdlr-lms-combobox"  >
+            <select name="member[gmat_score]" style="  width: 100%;" id="gmat">
+                  <option value="">-----Select----</option>
+                  <% addthree(800) do |n| %>
+                     <option value="<%= n %>"><%= n %></option>
+                  <% end %>
+                
+              </select>
+              <script type="text/javascript">
+        for(var i=0;i<document.getElementById('gmat').length;i++)
+        {
+            if(document.getElementById('gmat').options[i].value=="<%= current_user.gmat_score  %>")
+            {
+                    document.getElementById('gmat').options[i].selected=true
+            }
+        }          
+            </script>
+            <%#= text_field_tag 'member[gmat_score]' , current_user.gmat_score,placeholder: 'GMAT Score' %></span></p>
+            <p class="gdlr-lms-half-left">
+        
+        <label style="color:black">Photo*</label>
+        
+            <%= f.file_field :image, class: 'form-control' %>
+            <%= image_tag current_user.image.thumb('200x128#').url,:style => 'margin-top: 9px;margin-left: 93px;border: 1px;border-radius: 12px;' if current_user.image   %></p>
+        
+            
+        <p class="gdlr-lms-half-left">
+ <div style="width:100%;">
+     <%= submit_tag 'Submit',class: 'wpcf7-form-control wpcf7-submit',name: 'signup',style:'font-size:15px;'%>
+
+<a href="<%= profile_chnagepwd_path %>" style="margin-left: 39px;">Change The Password?</a>
+ </div></p>
+
+
+
+
+        </div>
+    <%end%> 
+
+
+
+
+                    </div>
+                    </div>
+
+                    <!-- <div class="three column">
+                <%#= ad_unit(:skyscraper, "pub-6430317842295107", {:slot => "5305317726"}) %>
+                </div> -->
+<div class="clear"></div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script type="text/javascript">
+$("#state").change(function(){
+   // alert("check");
+   var stateid=$("#state").val();
+   // alert(a);
+    $.ajax({
+              url: "<%=root_url %>colleges/index/"+stateid,
+              context: document.body
+            }).done(function(r) {
+
+                   // alert(r);
+                document.getElementById('undergraduate_school').innerHTML=r;
+                
+        });
+    
+});
+
+$('#question').click(function(){
+    var a=$("#question").val();
+        $('#stated').css('display','block');
+        $('#schoold').css('display','none');
+    
+    
+});
+$('#question1').click(function(){
+    
+    var b=$("#question1").val();
+    $('#schoold').css('display','block');
+    $('#stated').css('display','none');
+    
+});
+
+if ($("#question").prop("checked")) 
+{
+
+   $('#stated').css('display','block');
+   $('#schoold').css('display','none');
+}
+
+if ($("#question1").prop("checked")) 
+{
+    
+   $('#stated').css('display','none');
+   $('#schoold').css('display','block');
+}
+
+
+
+
+</script>
+
